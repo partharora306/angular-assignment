@@ -1,0 +1,43 @@
+<div class="container">
+  <br /><br />Select layout:
+  <label *ngFor="let radiobutton of radioItems">
+    <br /><input
+      type="radio"
+      name="options"
+      (click)="model.option = radiobutton"
+    />{{ radiobutton }} </label
+  ><br /><br /><br />
+  <div fxLayout="{{ model.option }}" fxLayoutAlign="space-evenly left">
+    <app-child
+      #Jack
+      [name]="childData[0].name"
+      [money]="childData[0].money"
+      (getMoney)="getMoney($event)"
+      (subtractMoneyParentCall)="subtractMoneyParentCall($event)"
+    ></app-child>
+    <button (click)="sendMoneyToJack()" style="width:20%">
+      Send Money to Jack!</button
+    ><br />
+    <button (click)="Jack.subtractMoney()" style="width:20%">
+      Get Money from Jack!
+    </button>
+    <br />
+  </div>
+  <br />
+  <br /><br />
+  <div fxLayout="{{ model.option }}" fxLayoutAlign="space-evenly left">
+    <app-child
+      #Jill
+      [name]="childData[1].name"
+      [money]="childData[1].money"
+      (getMoney)="getMoney($event)"
+      (subtractMoneyParentCall)="subtractMoneyParentCall($event)"
+    ></app-child>
+    <button (click)="sendMoneyToJill()" style="width:20%">
+      Send Money to Jill!</button
+    ><br />
+    <button (click)="Jill.subtractMoney()" style="width:20%">
+      Get Money from Jill!</button
+    ><br />
+  </div>
+</div>
